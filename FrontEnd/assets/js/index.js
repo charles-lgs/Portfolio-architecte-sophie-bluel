@@ -1,6 +1,6 @@
 const gallery = document.querySelector(".gallery");
 
-//////////// Data recovery function ////////////
+//////////// Function to retrieve works ////////////
 async function getWorks() {
   const response = await fetch("http://localhost:5678/api/works");
   return await response.json();
@@ -25,3 +25,10 @@ async function displayWorks() {
   });
 }
 displayWorks();
+
+//////////// Function to retrieve categories ////////////
+async function getCategories() {
+  const response = await fetch("http://localhost:5678/api/categories");
+  return await response.json();
+}
+getCategories();
