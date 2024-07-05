@@ -1,9 +1,15 @@
+.link-login {
+  text-decoration: none;
+  color: black;
+}
+
 .container-btn-filter {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   margin-bottom: 30px;
+  top: 10px;
 }
 .container-btn-filter .btn-filter {
   background-color: #ffffff;
@@ -19,6 +25,71 @@
 .container-btn-filter .btn-filter:hover {
   color: #ffffff;
   background-color: #1D6154;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.container-link-header li {
+  font-size: 16px;
+}
+.container-link-header .login {
+  font-weight: 600;
+}
+.container-link-header img {
+  height: 22px;
+  width: 22px;
+  padding-top: 4px;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 240px;
+}
+.container-login form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.container-login form label {
+  margin-bottom: 5px;
+  color: #3D3D3D;
+}
+.container-login form #email, .container-login form #password {
+  height: 51px;
+  width: 379px;
+  margin-bottom: 30px;
+  border: none;
+  font-size: 18px;
+  padding-left: 5px;
+  filter: drop-shadow(0 0 8px rgb(212, 212, 212));
+}
+.container-login form #password {
+  margin-bottom: 20px;
+}
+.container-login form #submit {
+  border: none;
+  height: 36px;
+  width: 179px;
+}
+.container-login form #submit:hover {
+  background-color: #0E2F28;
+}
+.container-login a {
+  color: #3D3D3D;
+}
+
+.container-link-footer {
+  height: 60px;
+  margin-bottom: 10px;
+}
+.container-link-footer li {
+  font-size: 14px;
+  font-weight: 300;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/

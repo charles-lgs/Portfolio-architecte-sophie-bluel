@@ -1,8 +1,16 @@
-// sass --watch style.scss:../style.css
+// sass --watch assets/sass/style.scss:assets/sass/style.css
 
-//////////// Added styling for filter buttons ////////////
+//////////// Added styling ////////////
 $darkgreen: #1D6154;
-$background: #ffffff;      
+$background: #ffffff;
+$hover: #0E2F28;
+$gray: #3D3D3D;
+
+// Home page \\
+.link-login {
+	text-decoration: none;
+	color: black;
+}
 
 .container-btn-filter {
     display: flex;
@@ -10,6 +18,7 @@ $background: #ffffff;
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
+	top: 10px;
 
     .btn-filter{
         background-color: $background;
@@ -28,6 +37,76 @@ $background: #ffffff;
     }
 }
 
+// Login page \\
+.logo-link {
+	text-decoration: none;
+}
+.container-link-header {
+
+	li {
+		font-size: 16px;
+	}
+	.login {
+		font-weight: 600;
+	}
+	img {
+		height: 22px;
+		width: 22px;
+		padding-top: 4px;
+	}
+}
+.container-login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 150px;
+	margin-bottom: 240px;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		margin-top: 50px;
+
+		label {
+			margin-bottom: 5px;
+			color: $gray;
+		}
+		#email, #password {
+			height: 51px;
+			width: 379px;
+			margin-bottom: 30px;
+			border: none;
+			font-size: 18px;
+			padding-left: 5px;
+			filter: drop-shadow(0 0 8px rgb(212, 212, 212));
+		}
+		#password {
+			margin-bottom: 20px;
+		}
+		#submit {
+			border: none;
+			height: 36px;
+			width: 179px;
+		}
+		#submit:hover {
+			background-color: $hover;
+		}
+	}
+	a {
+		color: $gray;
+	}
+}
+.container-link-footer {
+	height: 60px;
+	margin-bottom: 10px;
+
+	li {
+		font-size: 14px;
+		font-weight: 300;
+	}
+}
+
+///////////////////////////////////////////////
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
