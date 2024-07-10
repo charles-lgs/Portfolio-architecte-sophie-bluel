@@ -7,9 +7,41 @@ $hover: #0E2F28;
 $gray: #3D3D3D;
 
 // Home page \\
+.edit-mode {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	height: 59px;
+
+	h3 {
+		color: white;
+		margin-left: 5px;
+	}
+}
+
 .link-login {
 	text-decoration: none;
 	color: black;
+}
+
+.title-project {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	
+	.link-project {
+		display: none;
+		margin-bottom: 30px;
+		text-decoration: none;
+		color: black;
+
+		p {
+			margin-left: 10px;
+			padding-top: 2px;
+		}
+	}
 }
 
 .container-btn-filter {

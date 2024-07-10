@@ -36,7 +36,7 @@ form.addEventListener("submit", async (e) => {
   try {
     const response = await postUsers(init);
 
-    // Vérifiez si la réponse contient le token et le userId
+    // Vérifier si la réponse contient le token et le userId
     if (response.token && response.userId) {
       // Stocker le token et le userId dans le localStorage
       sessionStorage.setItem("token", response.token);
@@ -44,8 +44,10 @@ form.addEventListener("submit", async (e) => {
 
       console.log("Utilisateur connecté:", response);
 
-      // Traitez les étapes suivantes après la connexion
+      // Traiter les étapes suivantes après la connexion
       errorMessage.textContent = "Bonjour Sophie !";
+      // Redirection vers la page d'accueil
+      window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
     } else {
       console.error("Réponse invalide:", response);
       errorMessage.textContent =
