@@ -21,8 +21,13 @@ $gray: #3D3D3D;
 }
 
 .link-login {
+	display: block;
 	text-decoration: none;
 	color: black;
+}
+
+.link-logout {
+	display: none;
 }
 
 .title-project {
@@ -122,6 +127,9 @@ $gray: #3D3D3D;
 		}
 		#submit:hover {
 			background-color: $hover;
+		}
+		.error-message {
+			color: red;
 		}
 	}
 	a {

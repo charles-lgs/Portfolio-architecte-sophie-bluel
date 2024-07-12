@@ -1,19 +1,27 @@
-const form = document.querySelector("form");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const errorMessage = document.querySelector(".error-message");
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    await loginUser();
+  });
+});
 
+////////// Send data to remote server //////////
 async function postUsers(init) {
   const response = await fetch("http://localhost:5678/api/users/login", init);
   return await response.json();
 }
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+////////// User verification and server response //////////
+async function loginUser() {
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const errorMessage = document.querySelector(".error-message");
 
   const userEmail = email.value;
   const userPassword = password.value;
 
+  ///// Single user /////
   if (userEmail !== "sophie.bluel@test.tld" || userPassword !== "S0phie") {
     errorMessage.textContent = "Mot de passe et email invalides.";
     console.error("Erreur : Identifiants incorrects");
@@ -23,39 +31,36 @@ form.addEventListener("submit", async (e) => {
   const init = {
     method: "POST",
     headers: {
-      "content-Type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: userEmail,
       password: userPassword,
     }),
     mode: "cors",
-    credential: "same-origin",
+    credentials: "same-origin",
   };
 
   try {
     const response = await postUsers(init);
 
-    // Vérifier si la réponse contient le token et le userId
     if (response.token && response.userId) {
-      // Stocker le token et le userId dans le localStorage
+      ///// Injection response into session storage /////
       sessionStorage.setItem("token", response.token);
       sessionStorage.setItem("userId", response.userId);
 
       console.log("Utilisateur connecté:", response);
 
-      // Traiter les étapes suivantes après la connexion
-      errorMessage.textContent = "Bonjour Sophie !";
-      // Redirection vers la page d'accueil
-      window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
+      ///// Redirection to home page /////
+      window.location.href = "index.html";
     } else {
       console.error("Réponse invalide:", response);
       errorMessage.textContent =
         "Erreur de connexion. Veuillez vérifier vos identifiants.";
     }
   } catch (error) {
-    console.log("Erreur: ", error);
+    console.error("Erreur:", error);
     errorMessage.textContent =
       "Erreur de connexion. Veuillez vérifier vos identifiants.";
   }
-});
+}

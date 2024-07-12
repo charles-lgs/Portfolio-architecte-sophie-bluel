@@ -11,8 +11,13 @@
 }
 
 .link-login {
+  display: block;
   text-decoration: none;
   color: black;
+}
+
+.link-logout {
+  display: none;
 }
 
 .title-project {
@@ -107,6 +112,9 @@
 }
 .container-login form #submit:hover {
   background-color: #0E2F28;
+}
+.container-login form .error-message {
+  color: red;
 }
 .container-login a {
   color: #3D3D3D;
