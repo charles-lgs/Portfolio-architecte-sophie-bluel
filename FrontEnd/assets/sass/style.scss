@@ -16,7 +16,10 @@ $gray: #3D3D3D;
 
 	h3 {
 		color: white;
-		margin-left: 5px;
+		margin-left: 10px;
+	}
+	.fa-white {
+		color: #ffffff;
 	}
 }
 
@@ -35,7 +38,7 @@ $gray: #3D3D3D;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 20px;
+	gap: 30px;
 	
 	.link-project {
 		display: none;
