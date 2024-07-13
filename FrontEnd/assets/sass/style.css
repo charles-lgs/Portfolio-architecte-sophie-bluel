@@ -18,6 +18,7 @@
 
 .link-logout {
   display: none;
+  cursor: pointer;
 }
 
 .title-project {
