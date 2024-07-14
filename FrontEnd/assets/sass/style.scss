@@ -5,6 +5,7 @@ $darkgreen: #1D6154;
 $background: #ffffff;
 $hover: #0E2F28;
 $gray: #3D3D3D;
+$lightGray: #B3B3B3;
 
 // Home page \\
 .edit-mode {
@@ -77,6 +78,60 @@ $gray: #3D3D3D;
         color: $background;
         background-color: $darkgreen;
     }
+}
+
+///// Modale /////
+.container-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	max-width: 1440px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.192);
+
+	.container-gallery {
+		background-color: #ffffff;
+		width: 44%;
+		height: 62.7%;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		position: relative;
+
+		.fa-xmark {
+			position: absolute;
+			top: 40px;
+			right: 40px;
+		}
+		h3 {
+			font-size: 26px;
+		}
+		.gallery-photo {
+			border-bottom: solid 1px $lightGray;
+			width: 70%;
+		}
+		button {
+			font-family: 'Syne';
+			font-weight: 700;
+			font-size: 14px;
+			color: white;
+			background-color: #1D6154;
+			height: 36px;
+			margin : 2em auto;
+			padding: 0 50px;
+			text-align: center;
+			border-radius: 60px ;
+			border: none;
+		}
+		button:hover {
+			background-color: $hover;
+		}
+	}
 }
 
 // Login page \\
