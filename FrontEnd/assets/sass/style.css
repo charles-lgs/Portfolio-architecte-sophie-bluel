@@ -92,6 +92,7 @@
   position: absolute;
   top: 40px;
   right: 40px;
+  cursor: pointer;
 }
 .container-modal .container-gallery h3 {
   font-size: 26px;
