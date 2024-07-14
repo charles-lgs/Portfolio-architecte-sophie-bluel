@@ -4,6 +4,7 @@
   align-items: center;
   background-color: black;
   height: 59px;
+  min-width: 1440px;
 }
 .edit-mode h3 {
   color: white;

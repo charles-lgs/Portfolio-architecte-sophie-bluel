@@ -13,6 +13,7 @@ $gray: #3D3D3D;
 	align-items: center;
 	background-color: black;
 	height: 59px;
+	min-width: 1440px;
 
 	h3 {
 		color: white;
@@ -249,7 +250,6 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
