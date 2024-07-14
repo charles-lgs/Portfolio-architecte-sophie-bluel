@@ -189,15 +189,24 @@ table {
 
 /** end reset css**/
 body {
-  max-width: 1140px;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
 }
 
+header, main, footer {
+  max-width: 1140px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
+  min-width: 1140px;
   margin: 50px 0;
 }
 
@@ -238,6 +247,11 @@ nav li {
   font-size: 1.2em;
 }
 
+nav img {
+  height: 22px;
+  width: 22px;
+}
+
 li:hover {
   color: #B1663C;
 }
@@ -259,6 +273,7 @@ li:hover {
 
 #introduction article {
   flex: 1;
+  padding-right: 50px;
 }
 
 #introduction h2 {
@@ -337,6 +352,7 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+  min-width: 1120px;
 }
 
 /*# sourceMappingURL=style.css.map */
