@@ -149,6 +149,30 @@ async function filterCategory() {
 const linkProject = document.querySelector(".link-project");
 const containerModale = document.querySelector(".container-modal");
 const xMark = document.querySelector(".fa-xmark");
+const galleryPhoto = document.querySelector(".gallery-photo");
+
+//////////// Retrieval and display of projects ////////////
+async function displayProject() {
+  galleryPhoto.innerHTML = "";
+  const works = await getWorks();
+
+  works.forEach((work) => {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const span = document.createElement("span");
+    const trash = document.createElement("i");
+
+    trash.classList.add("fa-solid", "fa-trash-can");
+    trash.id = work.id;
+    img.src = work.imageUrl;
+
+    span.appendChild(trash);
+    figure.appendChild(span);
+    figure.appendChild(img);
+    galleryPhoto.appendChild(figure);
+  });
+}
+displayProject();
 
 linkProject.addEventListener("click", () => {
   containerModale.style.display = "flex";
