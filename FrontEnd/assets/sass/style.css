@@ -85,8 +85,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: relative;
+  padding-top: 60px;
 }
 .container-modal .container-gallery .fa-xmark {
   position: absolute;
@@ -99,7 +100,35 @@
 }
 .container-modal .container-gallery .gallery-photo {
   border-bottom: solid 1px #B3B3B3;
-  width: 70%;
+  width: 68%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 50px;
+}
+.container-modal .container-gallery .gallery-photo figure {
+  position: relative;
+  width: 77px;
+  height: 103px;
+}
+.container-modal .container-gallery .gallery-photo figure img {
+  width: 77px;
+  height: 103px;
+}
+.container-modal .container-gallery .gallery-photo figure span {
+  background-color: #000;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 5px;
+  right: 5px;
+  height: 17px;
+  width: 17px;
+}
+.container-modal .container-gallery .gallery-photo figure span .fa-trash-can {
+  color: #ffffff;
+  padding-top: 2px;
 }
 .container-modal .container-gallery button {
   font-family: "Syne";

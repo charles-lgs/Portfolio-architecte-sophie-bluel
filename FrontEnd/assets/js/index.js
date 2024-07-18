@@ -162,7 +162,7 @@ async function displayProject() {
     const span = document.createElement("span");
     const trash = document.createElement("i");
 
-    trash.classList.add("fa-solid", "fa-trash-can");
+    trash.classList.add("fa-solid", "fa-trash-can", "fa-xs");
     trash.id = work.id;
     img.src = work.imageUrl;
 
