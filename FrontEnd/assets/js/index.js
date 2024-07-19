@@ -202,7 +202,7 @@ function deleteWork() {
         .then((data) => {
           console.log("Ca fonctionne ! : ", data);
           displayProject();
-          displayWorks();
+          // displayWorks();
         });
     });
   });
