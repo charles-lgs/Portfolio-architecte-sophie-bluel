@@ -74,6 +74,7 @@ async function getWorks() {
 
 //////////// Display works on the DOM ////////////
 async function displayWorks() {
+  gallery.innerHTML = "";
   const dataWorks = await getWorks();
 
   dataWorks.forEach((work) => {
@@ -170,6 +171,40 @@ async function displayProject() {
     figure.appendChild(span);
     figure.appendChild(img);
     galleryPhoto.appendChild(figure);
+
+    deleteWork();
+  });
+}
+// displayProject();
+
+//////////// Delete projects ////////////
+function deleteWork() {
+  const allTrash = document.querySelectorAll(".fa-trash-can");
+  const token = sessionStorage.getItem("token");
+
+  allTrash.forEach((trash) => {
+    trash.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = trash.id;
+
+      const init = {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      };
+
+      fetch("http://localhost:5678/api/works/" + id, init)
+        .then((response) => {
+          if (!response.ok) {
+            console.log("Ca fonctionne po");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Ca fonctionne ! : ", data);
+          displayProject();
+          displayWorks();
+        });
+    });
   });
 }
 displayProject();

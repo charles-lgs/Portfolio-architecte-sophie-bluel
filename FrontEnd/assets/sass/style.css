@@ -125,6 +125,7 @@
   right: 5px;
   height: 17px;
   width: 17px;
+  cursor: pointer;
 }
 .container-modal .container-gallery .gallery-photo figure span .fa-trash-can {
   color: #ffffff;
