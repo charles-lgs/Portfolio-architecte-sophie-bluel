@@ -149,8 +149,13 @@ async function filterCategory() {
 
 const linkProject = document.querySelector(".link-project");
 const containerModale = document.querySelector(".container-modal");
-const xMark = document.querySelector(".fa-xmark");
 const galleryPhoto = document.querySelector(".gallery-photo");
+const modaleDelete = document.querySelector(".container-gallery");
+const modaleAdd = document.querySelector(".container-modale-add");
+const btnreturn = document.querySelector(".fa-arrow-left");
+const btnModaleAdd = document.getElementById("button-add-works");
+const xmarkOne = document.getElementById("xmark-one");
+const xmarkTwo = document.getElementById("xmark-two");
 
 //////////// Retrieval and display of projects ////////////
 async function displayProject() {
@@ -175,7 +180,6 @@ async function displayProject() {
     deleteWork();
   });
 }
-// displayProject();
 
 //////////// Delete projects ////////////
 function deleteWork() {
@@ -209,16 +213,35 @@ function deleteWork() {
 }
 displayProject();
 
+//////////// Events ////////////
 linkProject.addEventListener("click", () => {
   containerModale.style.display = "flex";
 });
 
-xMark.addEventListener("click", () => {
+xmarkOne.addEventListener("click", () => {
+  containerModale.style.display = "none";
+});
+
+xmarkTwo.addEventListener("click", () => {
+  modaleAdd.style.display = "none";
+  modaleDelete.style.display = "flex";
   containerModale.style.display = "none";
 });
 
 containerModale.addEventListener("click", (e) => {
   if (e.target.classList.value == "container-modal") {
+    modaleAdd.style.display = "none";
+    modaleDelete.style.display = "flex";
     containerModale.style.display = "none";
   }
+});
+
+btnModaleAdd.addEventListener("click", () => {
+  modaleDelete.style.display = "none";
+  modaleAdd.style.display = "flex";
+});
+
+btnreturn.addEventListener("click", () => {
+  modaleAdd.style.display = "none";
+  modaleDelete.style.display = "flex";
 });
