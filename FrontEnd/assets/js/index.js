@@ -244,6 +244,20 @@ inputFile.addEventListener("change", () => {
   }
 });
 
+//////////// Dynamic addition of categories ////////////
+async function displayModaleCategories() {
+  const select = document.getElementById("category");
+  const categories = await getCategories();
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    select.appendChild(option);
+  });
+}
+displayModaleCategories();
+
 //////////// Events ////////////
 linkProject.addEventListener("click", () => {
   containerModale.style.display = "flex";
