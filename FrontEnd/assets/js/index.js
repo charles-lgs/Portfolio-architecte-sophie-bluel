@@ -157,6 +157,16 @@ const btnModaleAdd = document.getElementById("button-add-works");
 const xmarkOne = document.getElementById("xmark-one");
 const xmarkTwo = document.getElementById("xmark-two");
 
+const previewImg = document.querySelector(".container-file img");
+const inputFile = document.querySelector(".container-file input");
+const labelFile = document.querySelector(".container-file label");
+const iconFile = document.querySelector(".container-file .fa-image");
+const txtFile = document.querySelector(".container-file p");
+
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
+///////////// Delete modale /////////////
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
+
 //////////// Retrieval and display of projects ////////////
 async function displayProject() {
   galleryPhoto.innerHTML = "";
@@ -212,6 +222,27 @@ function deleteWork() {
   });
 }
 displayProject();
+
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
+///////////// Add modale ///////////////
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
+
+//////////// Preview of the image to download ////////////
+inputFile.addEventListener("change", () => {
+  const file = inputFile.files[0];
+  console.log(file);
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewImg.src = e.target.result;
+      previewImg.style.display = "flex";
+      labelFile.style.display = "none";
+      iconFile.style.display = "none";
+      txtFile.style.display = "none";
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
 //////////// Events ////////////
 linkProject.addEventListener("click", () => {
