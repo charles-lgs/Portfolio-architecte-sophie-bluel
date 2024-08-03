@@ -163,6 +163,13 @@ const labelFile = document.querySelector(".container-file label");
 const iconFile = document.querySelector(".container-file .fa-image");
 const txtFile = document.querySelector(".container-file p");
 
+const form = document.querySelector(".container-modale-add form");
+const title = document.querySelector(".container-modale-add #title");
+const category = document.querySelector(".container-modale-add #category");
+const fileInput = document.querySelector(
+  ".container-modale-add input[type='file']"
+);
+
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 ///////////// Delete modale /////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
@@ -257,6 +264,42 @@ async function displayModaleCategories() {
   });
 }
 displayModaleCategories();
+
+//////////// Post method for upload new work ////////////
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const token = sessionStorage.getItem("token");
+
+  const formData = new FormData();
+  formData.append("title", title.value);
+  formData.append("category", category.value);
+
+  if (fileInput.files.length > 0) {
+    formData.append("image", fileInput.files[0]);
+  }
+
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Erreur : ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    displayProject();
+    displayWorks();
+  } catch (error) {
+    console.log("Erreur : ", error);
+  }
+});
 
 //////////// Events ////////////
 linkProject.addEventListener("click", () => {
