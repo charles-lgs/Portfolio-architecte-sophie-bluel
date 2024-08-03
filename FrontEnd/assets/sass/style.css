@@ -234,6 +234,7 @@
 .container-modal .container-modale-add form .gray-line {
   height: 1px;
   border-bottom: solid 1px #B3B3B3;
+  color: red;
 }
 .container-modal .container-modale-add form .container-button {
   display: flex;

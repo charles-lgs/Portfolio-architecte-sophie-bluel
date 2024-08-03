@@ -169,6 +169,7 @@ const category = document.querySelector(".container-modale-add #category");
 const fileInput = document.querySelector(
   ".container-modale-add input[type='file']"
 );
+const errorAdd = document.querySelector(".gray-line");
 
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 ///////////// Delete modale /////////////
@@ -278,26 +279,31 @@ form.addEventListener("submit", async (e) => {
     formData.append("image", fileInput.files[0]);
   }
 
-  try {
-    const response = await fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
+  if (title.value === "" || category.value === "" || image === undefined) {
+    errorAdd.textContent = "Veuillez remplir tous les champs.";
+    return;
+  } else {
+    try {
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Erreur : ${errorText}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Erreur : ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      displayProject();
+      displayWorks();
+    } catch (error) {
+      console.log("Erreur : ", error);
     }
-
-    const data = await response.json();
-    console.log(data);
-    displayProject();
-    displayWorks();
-  } catch (error) {
-    console.log("Erreur : ", error);
   }
 });
 
