@@ -264,7 +264,6 @@ async function displayModaleCategories() {
     select.appendChild(option);
   });
 }
-// displayModaleCategories();
 
 //////////// Post method for upload new work ////////////
 form.addEventListener("submit", async (e) => {
