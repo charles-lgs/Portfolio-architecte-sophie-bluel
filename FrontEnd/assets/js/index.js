@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   displayWorks();
   displayCategories();
   filterCategory();
+  displayProject();
+  displayModaleCategories();
 });
 
 //////////// Checking the logged in user ////////////
@@ -194,9 +196,8 @@ async function displayProject() {
     figure.appendChild(span);
     figure.appendChild(img);
     galleryPhoto.appendChild(figure);
-
-    deleteWork();
   });
+  deleteWork();
 }
 
 //////////// Delete projects ////////////
@@ -218,25 +219,24 @@ function deleteWork() {
         .then((response) => {
           if (!response.ok) {
             console.log("Ca fonctionne po");
+          } else {
+            response.json();
           }
-          return response.json();
         })
         .then((data) => {
           console.log("Ca fonctionne ! : ", data);
-          displayProject();
-          // displayWorks();
         });
     });
   });
 }
-displayProject();
 
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 ///////////// Add modale ///////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 
 //////////// Preview of the image to download ////////////
-inputFile.addEventListener("change", () => {
+inputFile.addEventListener("change", (e) => {
+  e.preventDefault();
   const file = inputFile.files[0];
   console.log(file);
   if (file) {
@@ -264,7 +264,7 @@ async function displayModaleCategories() {
     select.appendChild(option);
   });
 }
-displayModaleCategories();
+// displayModaleCategories();
 
 //////////// Post method for upload new work ////////////
 form.addEventListener("submit", async (e) => {
@@ -279,7 +279,11 @@ form.addEventListener("submit", async (e) => {
     formData.append("image", fileInput.files[0]);
   }
 
-  if (title.value === "" || category.value === "" || image === undefined) {
+  if (
+    title.value === "" ||
+    category.value === "" ||
+    fileInput.files[0] === undefined
+  ) {
     errorAdd.textContent = "Veuillez remplir tous les champs.";
     return;
   } else {
@@ -299,8 +303,6 @@ form.addEventListener("submit", async (e) => {
 
       const data = await response.json();
       console.log(data);
-      displayProject();
-      displayWorks();
     } catch (error) {
       console.log("Erreur : ", error);
     }
