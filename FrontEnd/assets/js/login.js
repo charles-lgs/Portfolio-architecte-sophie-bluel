@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-////////// Send data to remote server //////////
+////////// Envoyer des données au serveur distant \\ Send data to remote server //////////
 async function postUsers(init) {
   const response = await fetch("http://localhost:5678/api/users/login", init);
   return await response.json();
 }
 
-////////// User verification and server response //////////
+////////// Vérification de l'utilisateur et réponse du serveur \\ User verification and server response //////////
 async function loginUser() {
   const email = document.getElementById("email");
   const password = document.getElementById("password");

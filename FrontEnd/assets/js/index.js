@@ -5,7 +5,7 @@ const containerButton = document.querySelector(".container-btn-filter");
 ///////////////////// Login part //////////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 
-//////////// Authentication and Page Customization ////////////
+//////////// Authentification et personnalisation des pages \\ Authentication and Page Customization ////////////
 document.addEventListener("DOMContentLoaded", function () {
   checkUserStatus();
   displayWorks();
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   displayModaleCategories();
 });
 
-//////////// Checking the logged in user ////////////
+//////////// Vérification de l'utilisateur connecté \\ Checking the logged in user ////////////
 function checkUserStatus() {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
@@ -27,7 +27,7 @@ function checkUserStatus() {
   }
 }
 
-//////////// Changing the home page if the user is login ////////////
+//////////// Changer la page d'accueil si l'utilisateur est connecté \\ Changing the home page if the user is login ////////////
 function customHomePage() {
   const loginLink = document.querySelector(".link-login");
   const logoutLink = document.querySelector(".link-logout");
@@ -42,7 +42,7 @@ function customHomePage() {
   btnFilter.style.display = "none";
 }
 
-//////////// Return to default home page if user is logout ////////////
+//////////// Revenir à la page d'accueil par défaut si l'utilisateur est déconnecté \\ Return to default home page if user is logout ////////////
 function displayLoginLink() {
   const loginLink = document.querySelector(".link-login");
   const logoutLink = document.querySelector(".link-logout");
@@ -57,7 +57,7 @@ function displayLoginLink() {
   btnFilter.style.display = "flex";
 }
 
-//////////// Disconnection and deletion ////////////
+//////////// Déconnexion et suppression \\ Disconnection and deletion ////////////
 function logout() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("userId");
@@ -68,13 +68,13 @@ function logout() {
 ////////////// Gallery and filter part /////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 
-//////////// Function to retrieve works ////////////
+//////////// Fonction pour récupérer des œuvres \\ Function to retrieve works ////////////
 async function getWorks() {
   const response = await fetch("http://localhost:5678/api/works");
   return await response.json();
 }
 
-//////////// Display works on the DOM ////////////
+//////////// Afficher travail sur le DOM \\ Show works on the DOM ////////////
 async function displayWorks() {
   gallery.innerHTML = "";
   const dataWorks = await getWorks();
@@ -84,7 +84,7 @@ async function displayWorks() {
   });
 }
 
-//////////// Creating elements in the DOM ////////////
+//////////// Créer des éléments dans le DOM \\ Creating elements in the DOM ////////////
 function createWorks(work) {
   const figure = document.createElement("figure");
   const image = document.createElement("img");
@@ -99,13 +99,13 @@ function createWorks(work) {
   gallery.appendChild(figure);
 }
 
-//////////// Function to retrieve categories ////////////
+//////////// Fonction pour récupérer les catégories \\ Function to retrieve categories ////////////
 async function getCategories() {
   const response = await fetch("http://localhost:5678/api/categories");
   return await response.json();
 }
 
-//////////// Display categories button on the DOM ////////////
+//////////// Afficher le bouton des catégories sur le DOM \\ Display categories button on the DOM ////////////
 async function displayCategories() {
   const categories = await getCategories();
 
@@ -121,7 +121,7 @@ async function displayCategories() {
   });
 }
 
-//////////// Filter works by category ////////////
+//////////// Filtrer les œuvres par catégorie \\ Filter works by category ////////////
 async function filterCategory() {
   const works = await getWorks();
   const buttons = document.querySelectorAll(".container-btn-filter button");
@@ -177,7 +177,7 @@ const errorAdd = document.querySelector(".gray-line");
 ///////////// Delete modale /////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 
-//////////// Retrieval and display of projects ////////////
+//////////// Récupération et affichage des projets \\ Retrieval and display of projects ////////////
 async function displayProject() {
   galleryPhoto.innerHTML = "";
   const works = await getWorks();
@@ -200,7 +200,7 @@ async function displayProject() {
   deleteWork();
 }
 
-//////////// Delete projects ////////////
+//////////// Supprimer des projets \\ Delete projects ////////////
 function deleteWork() {
   const allTrash = document.querySelectorAll(".fa-trash-can");
   const token = sessionStorage.getItem("token");
@@ -234,7 +234,7 @@ function deleteWork() {
 ///////////// Add modale ///////////////
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
 
-//////////// Preview of the image to download ////////////
+//////////// Aperçu de l'image à télécharger \\ Preview of the image to download ////////////
 inputFile.addEventListener("change", (e) => {
   e.preventDefault();
   const file = inputFile.files[0];
@@ -252,7 +252,7 @@ inputFile.addEventListener("change", (e) => {
   }
 });
 
-//////////// Dynamic addition of categories ////////////
+//////////// Ajout dynamique de catégories \\ Dynamic addition of categories ////////////
 async function displayModaleCategories() {
   const select = document.getElementById("category");
   const categories = await getCategories();
@@ -265,7 +265,7 @@ async function displayModaleCategories() {
   });
 }
 
-//////////// Post method for upload new work ////////////
+//////////// Méthode de publication pour télécharger un nouveau travail \\ Post method for upload new work ////////////
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const token = sessionStorage.getItem("token");
