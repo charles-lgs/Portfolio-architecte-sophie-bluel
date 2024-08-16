@@ -215,17 +215,13 @@ function deleteWork() {
         headers: { Authorization: `Bearer ${token}` },
       };
 
-      fetch("http://localhost:5678/api/works/" + id, init)
-        .then((response) => {
-          if (!response.ok) {
-            console.log("Ca fonctionne po");
-          } else {
-            response.json();
-          }
-        })
-        .then((data) => {
-          console.log("Ca fonctionne ! : ", data);
-        });
+      fetch("http://localhost:5678/api/works/" + id, init).then((response) => {
+        if (!response.ok) {
+          console.log("Ca fonctionne po");
+        } else {
+          console.log("Ca fonctionne ! : ", response.json());
+        }
+      });
     });
   });
 }
